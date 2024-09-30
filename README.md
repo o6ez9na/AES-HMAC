@@ -18,8 +18,8 @@ project-root/
 
 1. Склонируйте репозиторий:
    ```bash
-   git clone https://github.com/ваш_логин/ваш_репозиторий.git
-   cd ваш_репозиторий
+   git clone https://github.com/ваш_логин/AES-HMAC.git
+   cd AES-HMAC
    ```
 
 2. Создайте виртуальное окружение:
