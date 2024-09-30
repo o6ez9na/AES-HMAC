@@ -11,7 +11,11 @@ project-root/
 ├── .venv/
 ├── encrypt/
 │   ├── input.txt
-└── decrypt/
+├── decrypt/
+├── scripts/
+│   ├── const.py
+│   ├── scripts.py
+└── main.py
 ```
 
 ## Установка
