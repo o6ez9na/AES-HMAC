@@ -7,7 +7,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives import hashes
 from scripts.const import Constants as const
 
-# Генерация ключа
+#? Генерация ключа
 def generate_key(password: str, salt: bytes) -> bytes:
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
@@ -18,27 +18,27 @@ def generate_key(password: str, salt: bytes) -> bytes:
     )
     return kdf.derive(password.encode())
 
-# Функция для чтения файла
+#? Функция для чтения файла
 def read_file(file_name: str) -> bytes:
     with open(file_name, 'rb') as f:
         return f.read()
 
-# Функция для записи файла
+#? Функция для записи файла
 def write_file(file_name: str, data: bytes):
     with open(file_name, 'wb') as f:
         f.write(data)
 
-# Функция для создания шифратора/дешифратора
+#? Функция для создания шифратора/дешифратора
 def get_cipher(key: bytes, initialization_vector: bytes, encrypt: bool):
     cipher = Cipher(algorithms.AES(key), modes.CFB(initialization_vector), backend=default_backend())
     return cipher.encryptor() if encrypt else cipher.decryptor()
 
-# Функция шифрования/дешифрования
+#? Функция шифрования/дешифрования
 def process_file(data: bytes, key: bytes, initialization_vector: bytes, encrypt: bool) -> bytes:
     cipher = get_cipher(key, initialization_vector, encrypt)
     return cipher.update(data) + cipher.finalize()
 
-# Шифрование файла
+#? Шифрование файла
 def encrypt_file(input_filename: str, output_filename: str, password: str):
     try:
         salt = os.urandom(const.SALT_SIZE)
@@ -52,10 +52,10 @@ def encrypt_file(input_filename: str, output_filename: str, password: str):
     except Exception as e:
         print(f"Ошибка при шифровании: {e}")
 
-# Расшифрование файла
+#? Расшифрование файла
 def decrypt_file(input_filename: str, output_filename: str, password: str):
     try:
-        #* Вырезаем нужные нам параметры
+        #? Вырезаем нужные нам параметры
         file_data = read_file(input_filename)
         salt = file_data[:const.SALT_SIZE]
         hmac_value = file_data[const.SALT_SIZE:const.SALT_SIZE + const.HMAC_SIZE]
