@@ -22,7 +22,7 @@ project-root/
 
 1. Склонируйте репозиторий:
    ```bash
-   git clone https://github.com/ваш_логин/AES-HMAC.git
+   git clone https://github.com/o6ez9na/AES-HMAC.git
    cd AES-HMAC
    ```
 
